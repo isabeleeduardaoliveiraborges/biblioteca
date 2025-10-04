@@ -1,0 +1,305 @@
+/* GERAL */
+body {
+    background-color: #000000; /* Fundo preto */
+    color: #00FFFF; /* Cor principal do texto (verde água) */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada */
+}
+
+/* Links em geral */
+a {
+    color: #00FFFF; /* Links verde água */
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #FF0000; /* Links hover vermelho */
+    text-decoration: underline;
+}
+
+/* HEADER E NAVEGAÇÃO */
+.header_section {
+    background-color: #1a1a1a; /* Um tom de cinza escuro para o cabeçalho */
+    padding: 10px 0;
+    border-bottom: 2px solid #333333; /* Uma borda sutil */
+}
+
+.navbar {
+    background-color: transparent !important; /* Remove o fundo branco padrão do Bootstrap */
+    padding: 0;
+}
+
+.navbar-brand img {
+    max-width: 150px; /* Ajuste o tamanho do logo se necessário */
+    filter: drop-shadow(0 0 5px #00FFFF); /* Brilho LED no logo */
+}
+
+.navbar-toggler {
+    border-color: #00FFFF; /* Borda do botão do menu hamburguer */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important; /* Ícone do hamburguer verde água */
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #00FFFF; /* Itens do menu verde água */
+    font-weight: 500;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden; /* Para o efeito de hover com brilho */
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #FF0000; /* Itens do menu hover vermelho */
+    background-color: rgba(0, 255, 255, 0.1); /* Um leve fundo ao passar o mouse */
+    text-shadow: 0 0 8px #FF0000; /* Efeito de brilho de LED */
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: #FF0000; /* Item ativo vermelho */
+    text-shadow: 0 0 8px #FF0000; /* Brilho LED no ativo */
+    border: 1px solid #FF0000;
+}
+
+/* Botões de Login/Cadastro no HEADER */
+.login_bt a,
+.navbar-nav .login-btn {
+    display: inline-block;
+    background-color: #FF0000; /* Fundo do botão Login/Cadastro vermelho */
+    color: #000000; /* Texto preto */
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 15px;
+    box-shadow: 0 0 10px #FF0000; /* Brilho LED */
+    transition: all 0.3s ease;
+}
+
+.login_bt a:hover,
+.navbar-nav .login-btn:hover {
+    background-color: #00FFFF; /* Fundo verde água no hover */
+    color: #000000; /* Texto preto */
+    box-shadow: 0 0 15px #00FFFF; /* Brilho LED mais intenso */
+}
+
+.login_bt a .fa-user {
+    color: #000000 !important; /* Ícone do usuário preto */
+}
+
+/* Ícone de busca */
+.form-inline .fa-search {
+    color: #00FFFF; /* Ícone de busca verde água */
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+    text-shadow: 0 0 5px #00FFFF; /* Brilho LED */
+}
+
+/* SEÇÃO HERO */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/hero-bg.jpg') no-repeat center center; /* Imagem de fundo opcional, ou remova se não usar */
+    background-size: cover;
+    padding: 100px 0;
+    text-align: center;
+    border-bottom: 2px dashed #00FFFF; /* Linha divisória com efeito */
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    color: #FF0000; /* Título principal vermelho */
+    font-family: 'Georgia', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px #FF0000, 0 0 25px rgba(255, 0, 0, 0.5); /* Brilho LED mais forte */
+}
+
+.hero-subtitle {
+    color: #cccccc; /* Texto secundário um cinza mais claro */
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.login-section {
+    background-color: #1a1a1a; /* Fundo levemente mais claro para a seção de login */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); /* Sombra de LED verde água */
+    margin-top: 50px;
+    border: 1px solid #00FFFF;
+}
+
+.login-title {
+    color: #00FFFF; /* Título da seção de login verde água */
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #00FFFF;
+}
+
+.system-text {
+    color: #999999 !important; /* Texto mais suave */
+}
+
+.login-buttons .login-btn {
+    background-color: #FF0000; /* Botões de login vermelho */
+    color: #000000;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 10px;
+    box-shadow: 0 0 10px #FF0000;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.login-buttons .login-btn:hover {
+    background-color: #00FFFF; /* Botões de login hover verde água */
+    color: #000000;
+    box-shadow: 0 0 15px #00FFFF;
+}
+
+/* SEÇÃO DE RECURSOS (FEATURES) */
+.features-section {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #000000; /* Fundo preto */
+}
+
+.features-title {
+    color: #FF0000; /* Título da seção vermelho */
+    font-family: 'Georgia', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+    text-shadow: 0 0 15px #FF0000;
+}
+
+.feature-box {
+    background-color: #1a1a1a; /* Fundo cinza escuro para as caixas */
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2); /* Sombra de LED verde água */
+    border: 1px solid #333333;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-10px); /* Efeito de elevação */
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.5); /* Sombra mais intensa */
+    border-color: #00FFFF;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: #00FFFF; /* Ícone verde água */
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00FFFF;
+}
+
+.feature-title {
+    color: #FF0000; /* Título do recurso vermelho */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px #FF0000;
+}
+
+.feature-text {
+    color: #cccccc; /* Texto do recurso cinza claro */
+    font-size: 1rem;
+}
+
+/* INFORMAÇÕES DO SISTEMA (SOBRE) */
+.system-info {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 10px;
+    margin-top: 60px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2); /* Sombra de LED vermelho */
+    border: 1px solid #FF0000;
+    text-align: left; /* Alinha o texto à esquerda nesta seção */
+}
+
+.system-title {
+    color: #00FFFF; /* Título da info verde água */
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px #00FFFF;
+    text-align: center;
+}
+
+.system-info .system-text {
+    color: #cccccc;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.system-list {
+    list-style: none; /* Remove marcadores padrão */
+    padding: 0;
+    margin-left: 20px;
+}
+
+.system-list li {
+    color: #FF0000; /* Itens da lista vermelhos */
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+    font-size: 1.05rem;
+}
+
+.system-list li::before {
+    content: "\2022"; /* Bullet point */
+    color: #00FFFF; /* Bullet verde água */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    position: absolute;
+    left: 0;
+    text-shadow: 0 0 5px #00FFFF;
+}
+
+
+/* COPYRIGHT */
+.copyright_section {
+    background-color: #1a1a1a;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 2px solid #333333;
+}
+
+.copyright_text {
+    color: #999999; /* Texto do copyright cinza suave */
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVIDADE BÁSICA (exemplo) */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .features-title, .system-title {
+        font-size: 2rem;
+    }
+    .login-buttons .login-btn {
+        margin: 10px 0;
+        display: block;
+    }
+    .navbar-brand img {
+        max-width: 120px;
+    }
+}

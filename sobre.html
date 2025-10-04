@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Sobre - Biblioteca Geek</title>
+        <meta name="keywords" content="sobre, geek, livros, tecnologia, biblioteca">
+        <meta name="description" content="Conheça a Biblioteca Geek, sua fonte de conhecimento sobre cultura pop, ciência e tecnologia.">
+        <meta name="author" content="Seu Nome ou Nome da Empresa">
+        
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/cess.css"> 
+        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="icon" href="images/fevicon.png" type="image/gif" />
+        
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+        <style>
+            /* VARIÁVEIS DE CORES DO TEMA NEON */
+            :root {
+                --cor-texto-cian: #00FFFF; 
+                --cor-acao-red: #FF0000; 
+            }
+            
+            /* GERAL */
+            body {
+                background-color: #000000;
+                color: var(--cor-texto-cian);
+                font-family: 'Roboto', sans-serif;
+                line-height: 1.6;
+                overflow-x: hidden;
+            }
+
+            /* Links em geral */
+            a {
+                color: var(--cor-texto-cian);
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            a:hover {
+                color: var(--cor-acao-red);
+                text-decoration: none;
+            }
+
+            /* HEADER E NAVEGAÇÃO */
+            .header_section {
+                background-color: #1a1a1a; 
+                padding: 5px 0; 
+                border-bottom: 2px solid #333333;
+            }
+
+            .navbar {
+                background-color: transparent !important;
+                padding: 0;
+            }
+
+            .navbar-brand img {
+                max-width: 70px; 
+                filter: drop-shadow(0 0 5px var(--cor-texto-cian)); 
+            }
+
+            .navbar-nav .nav-item .nav-link {
+                color: var(--cor-texto-cian);
+                font-weight: 500;
+                padding: 8px 12px; 
+                margin: 0 3px;
+                border-radius: 5px;
+                position: relative;
+            }
+
+            .navbar-nav .nav-item .nav-link:hover {
+                color: var(--cor-acao-red);
+                background-color: rgba(0, 255, 255, 0.1);
+                text-shadow: 0 0 8px var(--cor-acao-red);
+            }
+
+            /* Estilo para item ATIVO */
+            .navbar-nav .nav-item.active .nav-link {
+                color: var(--cor-acao-red);
+                text-shadow: 0 0 8px var(--cor-acao-red);
+                border: 1px solid var(--cor-acao-red);
+            }
+
+            .login_bt a {
+                display: inline-block;
+                background-color: var(--cor-acao-red);
+                color: #000000;
+                padding: 8px 20px;
+                border-radius: 20px;
+                text-transform: uppercase;
+                font-weight: bold;
+                margin-left: 15px;
+                box-shadow: 0 0 10px var(--cor-acao-red);
+                transition: all 0.3s ease;
+            }
+
+            .login_bt a:hover {
+                background-color: var(--cor-texto-cian);
+                box-shadow: 0 0 15px var(--cor-texto-cian);
+            }
+
+            .login_bt a .fa-user {
+                color: #000000 !important;
+            }
+
+            /* TÍTULOS E TEXTOS PRINCIPAIS  */
+            .services_taital {
+                color: var(--cor-acao-red); 
+                font-family: 'Georgia', serif;
+                font-weight: 700;
+                text-shadow: 0 0 10px var(--cor-acao-red);
+                margin-bottom: 20px;
+                text-align: center;
+                font-size: 3rem;
+            }
+            .services_text {
+                color: #cccccc;
+                font-size: 1.1rem;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            .tasty_text {
+                color: var(--cor-texto-cian); 
+                text-shadow: 0 0 5px var(--cor-texto-cian);
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+            }
+            .tasty_text .fa {
+                margin-right: 10px;
+                text-shadow: 0 0 8px currentColor; 
+            }
+            .tasty_text .icon_img img {
+                filter: drop-shadow(0 0 5px var(--cor-texto-cian)); 
+                margin-right: 10px;
+            }
+            .lorem_text {
+                color: #aaaaaa;
+            }
+
+
+            /* Garante que o contêiner da linha funcione como Flexbox */
+            .services_section_2 .row {
+                display: flex;
+                flex-wrap: wrap; 
+            }
+            /* Garante que o item da coluna preencha a altura total */
+            .services_section_2 .row > [class*="col-"] {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .services_box {
+                background-color: #151515; 
+                padding: 30px;
+                border: 1px solid rgba(0, 255, 255, 0.2);
+                border-radius: 8px;
+                transition: all 0.4s;
+                height: 100%; 
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                margin-bottom: 30px; 
+            }
+            
+            .services_box:hover {
+                border-color: var(--cor-acao-red);
+                box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); 
+                transform: translateY(-5px);
+            }
+            
+            /*  ESPAÇAMENTO ENTRE AS DUAS LINHAS DE CARDS */
+            .services_section_2 {
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+            .services_section_2:not(:last-of-type) {
+                border-bottom: 1px dashed #333333; 
+            }
+
+            /* Botão 'Explore Nossos Livros Agora' */
+            .seemore_bt a {
+                display: inline-block;
+                background-color: var(--cor-texto-cian); 
+                color: #000000;
+                padding: 12px 35px;
+                border-radius: 25px;
+                text-transform: uppercase;
+                font-weight: bold;
+                box-shadow: 0 0 10px var(--cor-texto-cian);
+                transition: all 0.3s ease;
+                margin-top: 30px;
+            }
+            .seemore_bt a:hover {
+                background-color: var(--cor-acao-red);
+                box-shadow: 0 0 15px var(--cor-acao-red);
+            }
+
+            .copyright_section {
+                background-color: #1a1a1a;
+                padding: 30px 0; 
+                text-align: center;
+                border-top: 2px solid #333333;
+                margin-top: 50px; 
+            }
+            .copyright_text {
+                color: #999999;
+                font-size: 0.9rem;
+            }
+
+            /* RESPONSIVIDADE  */
+            @media (max-width: 991.98px) {
+                #navbarSupportedContent {
+                    text-align: center;
+                }
+                .navbar-nav {
+                    width: 100%;
+                    margin-left: auto !important; 
+                    margin-right: auto !important; 
+                    float: none;
+                }
+                .navbar-nav .nav-item .nav-link {
+                    display: block; 
+                }
+                .form-inline {
+                    width: 100%; 
+                    justify-content: center !important; 
+                    margin-top: 10px;
+                    margin-left: 0 !important; 
+                }
+                .navbar-brand img {
+                    max-width: 70px; 
+                }
+                
+                .services_section_2 .row {
+                    display: block;
+                }
+                .services_section_2 .row > [class*="col-"] {
+                    display: block;
+                }
+                .services_box {
+                    height: auto;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header_section">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand"href="index.html">
+                        <img src="images/logo.png" alt="Biblioteca Geek Logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="livros.html">Livros</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="sobre.html">Sobre</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="carinhooo.html">Carrinho</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0 ml-auto">
+                            <div class="login_bt">
+                                <a href="login.html">
+                                    Login <span style="color: #222222;"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="services_section layout_padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="services_taital">Sobre a Biblioteca Geek 📚</h1>
+                        <p class="services_text">Nascemos da paixão por tecnologia, ciência e toda a vasta cultura pop que nos cerca. Somos o seu portal para um universo de conhecimento e entretenimento. Seja bem-vindo ao seu novo ponto de encontro!</p>
+                    </div>
+                </div>
+                
+                <div class="services_section_2">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="services_box">
+                                <h5 class="tasty_text"><span class="icon_img"><img src="images/icon-1.png" alt="Icone de Livro"></span>Missão: Curadoria</h5>
+                                <p class="lorem_text">Oferecer uma curadoria especializada de livros e conteúdos, cobrindo de ficção científica clássica a tendências de TI. Encontre apenas o melhor.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="services_box">
+                                <h5 class="tasty_text"><span class="icon_img"><img src="images/icon-2.png" alt="Icone de Comunidade"></span>Comunidade Geek</h5>
+                                <p class="lorem_text">Criar um espaço vibrante para entusiastas compartilharem ideias, discutirem obras e celebrarem juntos o mundo pop em eventos exclusivos.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="services_box">
+                                <h5 class="tasty_text"><span class="icon_img"><img src="images/icon-1.png" alt="Icone de Inovação"></span>Visão: Inovação</h5>
+                                <p class="lorem_text">Buscar continuamente as melhores ferramentas e a melhor experiência de usuário para conectar você, de forma digital e rápida, ao seu próximo livro.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="services_section_2">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="services_box">
+                                <h5 class="tasty_text" style="color: var(--cor-acao-red);"><i class="fa fa-star" aria-hidden="true" style="color: var(--cor-acao-red); font-size: 24px; text-shadow: 0 0 8px var(--cor-acao-red);"></i>Conteúdo Exclusivo</h5>
+                                <p class="lorem_text">Acesso a edições raras e colecionáveis que você não encontra em livrarias comuns, selecionadas a dedo para colecionadores exigentes.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="services_box">
+                                <h5 class="tasty_text" style="color: var(--cor-texto-cian);"><i class="fa fa-rocket" aria-hidden="true" style="color: var(--cor-texto-cian); font-size: 24px; text-shadow: 0 0 8px var(--cor-texto-cian);"></i>Entrega Rápida e Segura</h5>
+                                <p class="lorem_text">Nosso sistema de logística garante que seus livros cheguem rápido e em perfeitas condições, embalados com carinho e proteção geek.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="services_box">
+                                <h5 class="tasty_text" style="color: var(--cor-acao-red);"><i class="fa fa-headphones" aria-hidden="true" style="color: var(--cor-acao-red); font-size: 24px; text-shadow: 0 0 8px var(--cor-acao-red);"></i>Suporte Fanático</h5>
+                                <p class="lorem_text">Nossa equipe de suporte é formada por fãs como você. Conte com a ajuda de quem realmente entende do universo geek 24/7, via chat ou e-mail.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="seemore_bt text-center"><a href="livros.html">Explore Nossos Livros Agora</a></div>
+            </div>
+        </div>
+
+        <div class="copyright_section">
+            <div class="container">
+                <p class="copyright_text">2024 Todos os direitos reservados. Biblioteca Geek - Onde o conhecimento encontra a paixão.</p>
+            </div>
+        </div>
+        
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.0.0.min.js"></script>
+        <script src="js/plugin.js"></script>
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="js/custom.js"></script>
+    </body>
+</html>

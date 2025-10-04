@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Livros - Biblioteca Geek</title>
+        <meta name="keywords" content="livros, geek, tomos, fantasia, terror">
+        <meta name="description" content="Explore a Biblioteca Sombria: tomos proibidos, grimórios ancestrais e literatura geek.">
+        <meta name="author" content="Seu Nome ou Nome da Empresa">
+        
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/cess.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="icon" href="images/fevicon.png" type="image/gif"/>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+        <style>
+            /* VARIÁVEIS DE CORES DO TEMA NEON */
+            :root {
+                --cor-texto-cian: #00FFFF; 
+                --cor-acao-red: #FF0000;
+            }
+            
+            /* GERAL */
+            body {
+                background-color: #000000;
+                color: var(--cor-texto-cian);
+                font-family: 'Roboto', sans-serif;
+                line-height: 1.6;
+                overflow-x: hidden;
+            }
+
+            /* Links em geral */
+            a {
+                color: var(--cor-texto-cian);
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            a:hover {
+                color: var(--cor-acao-red);
+                text-decoration: none;
+            }
+
+            /* HEADER E NAVEGAÇÃO */
+            .header_section {
+                background-color: #1a1a1a; 
+                padding: 5px 0; 
+                border-bottom: 2px solid #333333;
+            }
+
+            .navbar {
+                background-color: transparent !important;
+                padding: 0;
+            }
+
+            .navbar-brand img {
+                max-width: 70px; 
+                filter: drop-shadow(0 0 5px var(--cor-texto-cian)); 
+            }
+
+            .navbar-nav .nav-item .nav-link {
+                color: var(--cor-texto-cian);
+                font-weight: 500;
+                padding: 8px 12px; 
+                margin: 0 3px;
+                border-radius: 5px;
+                position: relative;
+            }
+
+            .navbar-nav .nav-item .nav-link:hover {
+                color: var(--cor-acao-red);
+                background-color: rgba(0, 255, 255, 0.1);
+                text-shadow: 0 0 8px var(--cor-acao-red);
+            }
+
+            .navbar-nav .nav-item.active .nav-link {
+                color: var(--cor-acao-red);
+                text-shadow: 0 0 8px var(--cor-acao-red);
+                border: 1px solid var(--cor-acao-red);
+            }
+
+            .login_bt a {
+                display: inline-block;
+                background-color: var(--cor-acao-red);
+                color: #000000;
+                padding: 8px 20px;
+                border-radius: 20px;
+                text-transform: uppercase;
+                font-weight: bold;
+                margin-left: 15px;
+                box-shadow: 0 0 10px var(--cor-acao-red);
+                transition: all 0.3s ease;
+            }
+
+            .login_bt a:hover {
+                background-color: var(--cor-texto-cian);
+                box-shadow: 0 0 15px var(--cor-texto-cian);
+            }
+
+            .login_bt a .fa-user {
+                color: #000000 !important;
+            }
+
+            /* Títulos da Seção de Livros */
+            .cream_taital {
+                color: var(--cor-acao-red); 
+                font-family: 'Georgia', serif;
+                font-weight: 700;
+                text-shadow: 0 0 10px var(--cor-acao-red);
+                margin-bottom: 20px;
+                text-align: center;
+                font-size: 3rem;
+            }
+            .cream_text {
+                color: #cccccc;
+                font-size: 1.1rem;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            
+            /* Garante que o contêiner da linha funcione como Flexbox */
+            .cream_section_2 .row {
+                display: flex;
+                flex-wrap: wrap; 
+            }
+            
+            /* Garante que o item da coluna preencha a altura total */
+            .cream_section_2 .row > [class*="col-"] {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            /* Garante que o card preencha o espaço da coluna */
+            .cream_box {
+                background-color: #151515; 
+                padding: 20px;
+                border: 1px solid rgba(0, 255, 255, 0.2);
+                border-radius: 8px;
+                transition: all 0.4s;
+                text-align: center;
+                margin-bottom: 30px;
+                height: 100%; 
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .cart_bt {
+                margin-top: auto; 
+                padding-top: 15px;
+            }
+
+            /* Estilo dos Cards de Livros */
+            .cream_box:hover {
+                border-color: var(--cor-texto-cian);
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); 
+                transform: translateY(-5px);
+            }
+            .cream_img img {
+                width: 100%;
+                max-height: 350px;
+                object-fit: cover;
+                border-radius: 4px;
+                margin-bottom: 15px;
+            }
+            .price_text {
+                color: var(--cor-acao-red); 
+                font-size: 1.5rem;
+                font-weight: bold;
+                text-shadow: 0 0 5px var(--cor-acao-red);
+                margin-bottom: 10px;
+            }
+            .strawberry_text {
+                color: #cccccc;
+                font-size: 1.2rem;
+                font-weight: 500;
+                margin-bottom: 20px;
+            }
+            .cart_bt a {
+                display: inline-block;
+                background-color: var(--cor-acao-red); 
+                color: #000000;
+                padding: 10px 25px;
+                border-radius: 25px;
+                text-transform: uppercase;
+                font-weight: bold;
+                box-shadow: 0 0 10px var(--cor-acao-red);
+                transition: all 0.3s ease;
+            }
+            .cart_bt a:hover {
+                background-color: var(--cor-texto-cian);
+                box-shadow: 0 0 15px var(--cor-texto-cian);
+                color: #000000;
+            }
+            
+            /* Botão 'Explorar Abismo' */
+            .seemore_bt a {
+                display: inline-block;
+                background-color: var(--cor-texto-cian); 
+                color: #000000;
+                padding: 12px 35px;
+                border-radius: 25px;
+                text-transform: uppercase;
+                font-weight: bold;
+                box-shadow: 0 0 10px var(--cor-texto-cian);
+                transition: all 0.3s ease;
+                margin-top: 30px;
+            }
+            .seemore_bt a:hover {
+                background-color: var(--cor-acao-red);
+                box-shadow: 0 0 15px var(--cor-acao-red);
+            }
+
+            /* COPYRIGHT */
+            .copyright_section {
+                background-color: #1a1a1a;
+                padding: 20px 0; 
+                text-align: center;
+                border-top: 2px solid #333333;
+                margin-top: 50px; 
+            }
+            .copyright_section.margin_top90 {
+                margin-top: 50px !important; 
+            }
+            .copyright_text {
+                color: #999999;
+                font-size: 0.9rem;
+            }
+
+            /* RESPONSIVIDADE  */
+            @media (max-width: 991.98px) {
+                #navbarSupportedContent {
+                    text-align: center;
+                }
+                .navbar-nav {
+                    width: 100%;
+                    margin-left: auto !important; 
+                    margin-right: auto !important; 
+                    float: none;
+                }
+                .navbar-nav .nav-item .nav-link {
+                    display: block; 
+                }
+                .form-inline {
+                    width: 100%; 
+                    justify-content: center !important; 
+                    margin-top: 10px;
+                    margin-left: 0 !important; 
+                }
+                .navbar-brand img {
+                    max-width: 70px; 
+                }
+                
+                .cream_section_2 .row {
+                    display: block;
+                }
+                .cream_section_2 .row > [class*="col-"] {
+                    display: block;
+                }
+                .cream_box {
+                    height: auto;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header_section">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand"href="index.html">
+                        <img src="images/logo.png" alt="Biblioteca Geek Logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="livros.html">Livros</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="sobre.html">Sobre</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="carinhooo.html">Carrinho</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0 ml-auto">
+                            <div class="login_bt">
+                                <a href="login.html">
+                                    Login <span style="color: #222222;"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="cream_section layout_padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="cream_taital">Biblioteca Sombria 💀</h1>
+                        <p class="cream_text">Tomos proibidos e grimórios ancestrais aguardam por corações destemidos. Adentre a escuridão.</p>
+                    </div>
+                </div>
+                
+                <div class="cream_section_2">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="cream_box">
+                                <div class="cream_img"><img src="images/el manuel dos.jpg" alt="Bestiário Sombrio"></div>
+                                <div class="price_text">R$ 45,00</div>
+                                <h6 class="strawberry_text">Bestiário Sombrio</h6>
+                                <div class="cart_bt"><a href="carinhooo.html?product=Bestiário Sombrio&price=45">Adicionar ao carrinho</a></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="cream_box">
+                                <div class="cream_img"><img src="images/sacramento.png" alt="Rituais Proibidos"></div>
+                                <div class="price_text">R$ 50,00</div>
+                                <h6 class="strawberry_text">Rituais Proibidos</h6>
+                                <div class="cart_bt"><a href="carinhooo.html?product=Rituais Proibidos&price=50">Adicionar ao carrinho</a></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="cream_box">
+                                <div class="cream_img"><img src="images/asimilaçao.jpg" alt="Assimilação Obscura"></div>
+                                <div class="price_text">R$ 42,00</div>
+                                <h6 class="strawberry_text">Assimilação Obscura</h6>
+                                <div class="cart_bt"><a href="carinhooo.html?product=Assimilação Obscura&price=42">Adicionar ao carrinho</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cream_section_2">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="cream_box">
+                                <div class="cream_img"><img src="images/tormenta.jpg" alt="Codex da Tormenta"></div>
+                                <div class="price_text">R$ 55,00</div>
+                                <h6 class="strawberry_text">Codex da Tormenta</h6>
+                                <div class="cart_bt"><a href="carinhooo.html?product=Codex da Tormenta&price=55">Adicionar ao carrinho</a></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="cream_box">
+                                <div class="cream_img"><img src="images/ordemnormal.jpg" alt="Ordem das Sombras"></div>
+                                <div class="price_text">R$ 48,00</div>
+                                <h6 class="strawberry_text">Ordem das Sombras</h6>
+                                <div class="cart_bt"><a href="carinhooo.html?product=Ordem das Sombras&price=48">Adicionar ao carrinho</a></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="cream_box">
+                                <div class="cream_img"><img src="images/manuel del mostros.jpg" alt="Bestiário de Sangue"></div>
+                                <div class="price_text">R$ 52,00</div>
+                                <h6 class="strawberry_text">Bestiário de Sangue</h6>
+                                <div class="cart_bt"><a href="carinhooo.html?product=Bestiário de Sangue&price=52">Adicionar ao carrinho</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="seemore_bt" style="text-align: center;"><a href="#">Explorar Abismo</a></div>
+            </div>
+        </div>
+        
+        <div class="copyright_section"> 
+            <div class="container">
+                <p class="copyright_text">2024 Todos os direitos reservados. Biblioteca Geek - Onde o conhecimento encontra a paixão.</p>
+            </div>
+        </div>
+        
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.0.0.min.js"></script>
+        <script src="js/plugin.js"></script>
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="js/custom.js"></script>
+    </body>
+</html>

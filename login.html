@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Login - Biblioteca Geek</title>
+    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/cess.css"> 
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+    <style>
+        /* VARIÁVEIS DE CORES DO TEMA NEON */
+        :root {
+            --cor-texto-cian: #00FFFF; 
+            --cor-acao-red: #FF0000; 
+            --cor-fundo-escuro: #000000;
+            
+            /* Sombras Neon */
+            --sombra-neon-cian: 0 0 8px #00FFFF, 0 0 15px rgba(0, 255, 255, 0.4);
+            --sombra-neon-red: 0 0 8px #FF0000, 0 0 15px rgba(255, 0, 0, 0.4);
+        }
+
+        /* ESTILOS GERAIS E NAVBAR PADRÃO */
+        body {
+            background-color: var(--cor-fundo-escuro);
+            color: var(--cor-texto-cian);
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Links em geral */
+        a {
+            color: var(--cor-texto-cian);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--cor-acao-red);
+            text-decoration: none;
+        }
+
+        /* HEADER E NAVEGAÇÃO */
+        .header_section {
+            background-color: #1a1a1a; 
+            padding: 5px 0; 
+            border-bottom: 2px solid #333333;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            padding: 0;
+        }
+
+        .navbar-brand img {
+            max-width: 70px; 
+            filter: drop-shadow(0 0 5px var(--cor-texto-cian)); 
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: var(--cor-texto-cian);
+            font-weight: 500;
+            padding: 8px 12px; 
+            margin: 0 3px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: var(--cor-acao-red);
+            background-color: rgba(0, 255, 255, 0.1);
+            text-shadow: 0 0 8px var(--cor-acao-red);
+        }
+
+        .navbar-nav .nav-item.active .nav-link {
+            color: var(--cor-acao-red);
+            text-shadow: 0 0 8px var(--cor-acao-red);
+            border: 1px solid var(--cor-acao-red);
+        }
+
+        /* Botão de Login no HEADER  */
+        .login_bt a {
+            display: inline-block;
+            background-color: var(--cor-acao-red);
+            color: #000000;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-left: 15px;
+            box-shadow: 0 0 10px var(--cor-acao-red);
+            transition: all 0.3s ease;
+        }
+
+        .login_bt a:hover {
+            background-color: var(--cor-texto-cian);
+            box-shadow: 0 0 15px var(--cor-texto-cian);
+        }
+
+        .login_bt a .fa-user {
+            color: #000000 !important;
+        }
+        
+        .login_bt.active a {
+            background-color: var(--cor-texto-cian); 
+            box-shadow: 0 0 15px var(--cor-texto-cian);
+        }
+        .login_bt.active a:hover {
+            background-color: var(--cor-acao-red); 
+            box-shadow: 0 0 15px var(--cor-acao-red);
+        }
+        
+        /* ESTILOS DO FORMULÁRIO DE LOGIN  */
+        .login-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            min-height: calc(100vh - 150px); 
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .login-container {
+            width: 380px; 
+            padding: 50px;
+            background-color: #000000;
+            border: 2px solid var(--cor-texto-cian);
+            border-radius: 10px;
+            box-shadow: var(--sombra-neon-cian); 
+            color: var(--cor-texto-cian);
+            animation: pulse-border 2s infinite alternate; 
+        }
+
+        @keyframes pulse-border {
+            from { box-shadow: var(--sombra-neon-cian); }
+            to { box-shadow: 0 0 12px #00FFFF, 0 0 20px rgba(0, 255, 255, 0.6); }
+        }
+
+        .login-container h2 {
+            font-family: 'Georgia', serif;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--cor-acao-red); 
+            text-shadow: var(--sombra-neon-red);
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 35px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 0;
+            background: transparent !important; 
+            border: none;
+            border-bottom: 2px solid var(--cor-texto-cian); 
+            outline: none;
+            color: var(--cor-texto-cian);
+            font-size: 1.1em;
+            transition: 0.3s;
+        }
+        
+        .input-group input:focus {
+            border-bottom: 2px solid var(--cor-acao-red); 
+            background: transparent !important; 
+        }
+
+        .input-group label {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            color: var(--cor-texto-cian);
+            pointer-events: none;
+            transition: 0.5s;
+        }
+
+        .input-group input:focus ~ label,
+        .input-group input:valid ~ label {
+            top: -20px;
+            color: var(--cor-acao-red);
+            text-shadow: var(--sombra-neon-red);
+        }
+
+        /* Estilo do botão de entrar*/
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--cor-acao-red);
+            color: #000000;
+            border-radius: 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: var(--sombra-neon-red); 
+            transition: 0.3s;
+            margin-bottom: 20px; 
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--cor-texto-cian); 
+            box-shadow: var(--sombra-neon-cian);
+            color: #000000;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        .links a {
+            color: var(--cor-texto-cian);
+            text-decoration: none;
+            transition: 0.3s;
+            margin: 0 10px;
+        }
+
+        .links a:hover {
+            color: var(--cor-acao-red);
+            text-shadow: 0 0 5px var(--cor-acao-red);
+        }
+
+        /* Rodapé de Direitos Autorais */
+        .copyright_section {
+            background-color: #1a1a1a;
+            padding: 30px 0; 
+            text-align: center;
+            border-top: 2px solid #333333;
+            margin-top: 50px; 
+        }
+        .copyright_text {
+            color: #999999;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVIDADE  */
+        @media (max-width: 991.98px) {
+            #navbarSupportedContent {
+                text-align: center;
+            }
+            .navbar-nav {
+                width: 100%;
+                margin-left: auto !important; 
+                margin-right: auto !important; 
+                float: none;
+            }
+            .navbar-nav .nav-item .nav-link {
+                display: block; 
+            }
+            .form-inline {
+                width: 100%; 
+                justify-content: center !important; 
+                margin-top: 10px;
+                margin-left: 0 !important; 
+            }
+            .navbar-brand img {
+                max-width: 70px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo.png" alt="Biblioteca Geek Logo">
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="livros.html">Livros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sobre.html">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="carinhooo.html">Carrinho</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0 ml-auto">
+                        <div class="login_bt active">
+                            <a href="login.html">
+                                Login <span style="color: #000000;"><i class="fa fa-user" aria-hidden="true"></i></span>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="login-wrapper">
+        <div class="login-container">
+            <h2>Acesso do Sistema</h2>
+<form action="usuario.html" method="POST">
+    <div class="input-group">
+        <input type="text" id="username" name="username" required>
+        <label for="username">Usuário</label>
+    </div>
+    <div class="input-group">
+        <input type="password" id="password" name="password" required>
+        <label for="password">Senha</label>
+    </div>
+    <button type="submit">ENTRAR</button>
+</form>
+
+            
+            <div class="links">
+                </div>
+        </div>
+    </div>
+    
+    <div class="copyright_section">
+        <div class="container">
+            <p class="copyright_text">2024 Todos os direitos reservados. Biblioteca Geek - Onde o conhecimento encontra a paixão.</p>
+        </div>
+    </div>
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/plugin.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+</html>
